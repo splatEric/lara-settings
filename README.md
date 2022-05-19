@@ -63,3 +63,11 @@ The config file can be published via `artisan`:
 ### Linting
 
 `composer format`
+
+## Changelog
+
+Please see [CHANGELOG](./CHANGELOG.md) for update history.
+
+## License
+
+The MIT License (MIT). Please see [License File](./LICENSE) for more information.
