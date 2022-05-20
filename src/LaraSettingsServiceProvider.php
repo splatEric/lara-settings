@@ -19,7 +19,7 @@ class LaraSettingsServiceProvider extends ServiceProvider
 
     public function register()
     {
-        $this->app->bind('lara-settings', function ($app) {
+        $this->app->singleton('lara-settings', function ($app) {
             return new SettingRepository(config('lara_settings.cache_key', 'lara-settings'));
         });
 

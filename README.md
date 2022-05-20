@@ -54,6 +54,40 @@ The config file can be published via `artisan`:
 
 `php artisan vendor:publish --provider=lara-settings-config`
 
+## Usage
+
+Beyond the examples shown above, seeding settings with initial values may be useful:
+
+```php
+// database/seeders/settings/default.php
+<?php
+
+return [
+    'foo' => ['bar' => 'baz']
+];
+```
+```php 
+// database/seeders
+
+/**
+* Only load settings if the file is present
+*/
+class LaraSettingsSeeder extends Seeder
+{
+    public function run()
+    {
+        $settingsFile = require(__DIR__ . '/settings/default.php';
+        if (file_exists($settingsFile)) {
+            foreach (require($settingsFile) as $key => $value) {
+                LaraSettings::set($key, $value);
+            }
+        }
+    } 
+}
+```
+
+By checking if the file exists or not, it's possible to not commit the settings file, and then upload a custom file for any given installation.
+
 ## Development
 
 ### Tests
@@ -67,6 +101,18 @@ The config file can be published via `artisan`:
 ## Changelog
 
 Please see [CHANGELOG](./CHANGELOG.md) for update history.
+
+## Future development
+
+### Admin support
+
+The `LaraSetting` model has an unused `description` attribute which is a placeholder for storing descriptive text about the setting that could be displayed in an admin UI. This field is not intended for dynamic alteration, but an interface should be provided to make the presentation of settings in admin straightforward.
+
+Given the wide variety of ways in which admin could be implemented, it's unlikely that UI will be added to the package, however a command line tool may prove useful. 
+
+### Model validation
+
+The `LaraSetting` accepts a string or an array as values. It might be useful to provide mechanisms to validate the content etc.
 
 ## License
 

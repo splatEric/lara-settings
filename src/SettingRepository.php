@@ -7,6 +7,9 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 
+/**
+ * Access and set LaraSetting values by key
+ */
 class SettingRepository
 {
     public function __construct(protected string $cacheKey)
