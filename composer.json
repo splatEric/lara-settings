@@ -1,6 +1,12 @@
 {
     "name": "camc/lara-settings",
     "description": "Abstraction for storing Laravel application settings in the database",
+    "keywords": [
+        "laravel",
+        "settings",
+        "database",
+        "lara-settings"
+    ],
     "type": "library",
     "license": "MIT",
     "autoload": {
