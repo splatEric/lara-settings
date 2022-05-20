@@ -1,5 +1,9 @@
 # LaraSettings
 
+[![Latest Stable Version](https://poser.pugx.org/camc/lara-settings/v/stable?format=flat-square)](https://packagist.org/packages/camc/lara-settings)
+[![MIT Licensed](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
+![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/splatEric/lara-settings/run-tests?label=tests)
+
 This Laravel package provides a simple abstraction for storing application settings in the database. It mimics the basic behaviour of the `config` helper and `Config` facades of core Laravel, but allows the values to be stored in the database where they can be more dynamically managed.
 
 ```php
