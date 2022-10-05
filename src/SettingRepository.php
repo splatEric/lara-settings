@@ -2,6 +2,7 @@
 
 namespace Camc\LaraSettings;
 
+use Camc\LaraSettings\Contracts\Repository;
 use Camc\LaraSettings\Models\LaraSetting;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
@@ -10,13 +11,13 @@ use Illuminate\Support\Str;
 /**
  * Access and set LaraSetting values by key
  */
-class SettingRepository
+class SettingRepository implements Repository
 {
     public function __construct(protected string $cacheKey)
     {
     }
 
-    public function has($key)
+    public function has($key): bool
     {
         $setting = $this->settings()
             ->where('key', Str::before($key, '.'))

@@ -43,6 +43,14 @@ LaraSettings::set('foo', null);
 lara_settings('foo', 'null value'); // "null value"
 ```
 
+## Testing support
+
+You can fake the facade in a similar way to other Laravel facades:
+
+```php
+LaraSettings::fake(['a_fake_key' => 'a fake value']);
+```
+
 ## Installation
 
 `composer require camc/lara-settings`

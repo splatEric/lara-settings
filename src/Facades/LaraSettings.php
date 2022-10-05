@@ -2,6 +2,7 @@
 
 namespace Camc\LaraSettings\Facades;
 
+use Camc\LaraSettings\Support\Testing\LaraSettingsFake;
 use Illuminate\Support\Facades\Facade;
 
 /**
@@ -11,6 +12,13 @@ use Illuminate\Support\Facades\Facade;
  */
 class LaraSettings extends Facade
 {
+    public static function fake($settingsToFake = [])
+    {
+        static::swap($fake = new LaraSettingsFake(static::getFacadeRoot(), $settingsToFake));
+
+        return $fake;
+    }
+
     protected static function getFacadeAccessor()
     {
         return 'lara-settings';
