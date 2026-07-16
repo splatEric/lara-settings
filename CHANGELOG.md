@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.4.0] - 2026-07-16
 - support for Laravel 12.x and 13.x
-- removed support for Laravel 10.x and lower
+- removed support for Laravel 11.x and lower (Laravel 11 reached end of security support on 2026-03-12)
 - minimum PHP version raised to 8.2
 
 ## [1.3.0] - 2024-02-25
