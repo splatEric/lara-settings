@@ -9,6 +9,7 @@ use Camc\LaraSettings\Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Cache;
+use PHPUnit\Framework\Attributes\Test;
 
 class SettingRepositoryTest extends TestCase
 {
@@ -25,7 +26,7 @@ class SettingRepositoryTest extends TestCase
         $this->repo = new SettingRepository($this->cacheKey);
     }
 
-    /** @test */
+    #[Test]
     public function cache_key_is_set_by_repository()
     {
         $repo = new SettingRepository('foobar');
@@ -36,7 +37,7 @@ class SettingRepositoryTest extends TestCase
         $this->assertTrue(Cache::has('foobar'));
     }
 
-    /** @test */
+    #[Test]
     public function no_setting_stored_returns_false_from_has()
     {
         Cache::shouldReceive('rememberForever')
@@ -48,7 +49,7 @@ class SettingRepositoryTest extends TestCase
         $this->assertFalse($this->repo->has('bar'));
     }
 
-    /** @test */
+    #[Test]
     public function empty_setting_stored_returns_true_from_has()
     {
         Cache::shouldReceive('rememberForever')
@@ -60,7 +61,7 @@ class SettingRepositoryTest extends TestCase
         $this->assertTrue($this->repo->has('foo'));
     }
 
-    /** @test */
+    #[Test]
     public function nested_null_value_returns_true_from_has()
     {
         Cache::shouldReceive('rememberForever')
@@ -72,7 +73,7 @@ class SettingRepositoryTest extends TestCase
         $this->assertTrue($this->repo->has('foo.bar'));
     }
 
-    /** @test */
+    #[Test]
     public function nested_false_value_returns_true_from_has()
     {
         Cache::shouldReceive('rememberForever')
@@ -84,7 +85,7 @@ class SettingRepositoryTest extends TestCase
         $this->assertTrue($this->repo->has('foo.bar'));
     }
 
-    /** @test */
+    #[Test]
     public function get_returns_nested_value()
     {
         Cache::shouldReceive('rememberForever')
@@ -96,7 +97,7 @@ class SettingRepositoryTest extends TestCase
         $this->assertEquals('baz', $this->repo->get('foo.bar'));
     }
 
-    /** @test */
+    #[Test]
     public function default_returned_for_null_value()
     {
         Cache::shouldReceive('rememberForever')
@@ -108,7 +109,7 @@ class SettingRepositoryTest extends TestCase
         $this->assertEquals('foobar', $this->repo->get('foo.bar', 'foobar'));
     }
 
-    /** @test */
+    #[Test]
     public function setting_updated_in_db_and_cache_is_forgotten()
     {
         $setting = LaraSetting::factory()->create(['value' => 'foobar']);
